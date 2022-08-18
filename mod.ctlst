@@ -1,0 +1,98 @@
+=============================================================
+ Running ctcreate
+=============================================================
+
+
+ ************************************************************
+ 
+           CT formats currently supported:
+     ------------------------------ 
+ 
+           1. Pinnacle                    
+           2. CADPLAN 
+           3. DICOM                       
+
+
+ ************************************************************
+
+
+ Input the format of your CT data
+ :                                                        DICOM
+
+
+ Input the full name of the file of DICOM file names
+ : /home/yasue/workingdir/DICOM/vxl
+--------------------------------------------
+CT Volume subset selection.
+Please enter the positions of limiting 
+planes (cm):
+  xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax
+ :     0.0000    0.0000    0.0000    0.0000    0.0000    0.0000
+ No subset requested, will use entire CT volume.
+--------------------------------------------
+The voxel index limits are as follows:
+I Limits -> i=     1 to i=   512
+J Limits -> j=     1 to j=   512
+K Limits -> k=     1 to k=    20
+ xctsubmin,xctsubmax,yctsubmin,yctsubmax,zctsubmin,zctsubmax (cm)
+ after adjustment to fit integer no. of voxels 
+ :   -25.0488   24.9512  -25.0488   24.9512   -2.3750    2.6250
+============================================
+
+ Resample CT data for dosxyznrc 
+ --------------------------- 
+
+ Input the x,y,z dimensions (cm) of the dosxyznrc voxelson one line
+ (min=      0.09766 x     0.09766 x     0.01667 cm)
+ :     0.10000     0.10000     0.10000
+New X voxel thickness ->       0.10
+New Y voxel thickness ->       0.10
+New Z voxel thickness ->       0.10
+New number X voxels   ->        500
+New number Y voxels   ->        500
+New number Z voxels   ->         50
+ Final x,y,z dimensions of dosxyznrc voxels in cm (adjusted so that an integer
+ number fit exactly on the CT data):     0.10000     0.10000     0.10000
+Calculating bounds and new CT values
+
+ The CT-Density Ramp
+ -------------------
+
+ Number of media (max   20), min. CT number of ramp
+(0,0 if you want to use the hard-wired ramp function):          5     -5000
+
+ Medium    1 : AIR521ICRU              
+ CT no. upper bound, density lower bound (g/cm^3),
+ density upper bound (g/cm^3)--all on one line
+ :  -950     0.00000     0.05000
+
+ Medium    2 : LUNG521ICRU             
+ CT no. upper bound, density lower bound (g/cm^3),
+ density upper bound (g/cm^3)--all on one line
+ :  -500     0.05000     0.50000
+
+ Medium    3 : ICRPADIPOSE521ICRU      
+ CT no. upper bound, density lower bound (g/cm^3),
+ density upper bound (g/cm^3)--all on one line
+ :   -62     0.50000     0.97800
+
+ Medium    4 : ICRUTISSUE521ICRU       
+ CT no. upper bound, density lower bound (g/cm^3),
+ density upper bound (g/cm^3)--all on one line
+ :    30     0.97800     1.25500
+
+ Medium    5 : ICRPBONE521ICRU         
+ CT no. upper bound, density lower bound (g/cm^3),
+ density upper bound (g/cm^3)--all on one line
+ :  2038     1.25500     2.39000
+
+ Warning: CT number in      54061 voxels is < min. CT number of 
+ ramp (     -5000).  Medium in these voxels is set to 0 (vacuum).
+
+
+ Warning: CT number in        225 voxels is > max. CT number of 
+ ramp (      2038).  Medium in these voxels is set to medium no.    5
+
+
+ Writing CT phantom data into vxl.egsphant to be read by dosxyznrc.
+
